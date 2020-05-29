@@ -55,8 +55,12 @@ UnknownDescript:
 	b ReturnDesc	
 	
 CancelDescript:
-	ldr r0, =(0x177)
-	bl other_img
+	mov r0, #0x5d
+	lsl r0, r0, #0x2
+	add r0, r0, #0x3	
+	ldr r1, [r5]
+	ldrb r1, [r1, #0x5]
+	bl CreateImage
 	ldr r0, =(descript_cancel)
 	
 ReturnDesc:
